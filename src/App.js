@@ -3,6 +3,7 @@ import Nav from "./components/nav/Nav";
 import Courses from "./pages/app/courses/Courses";
 import { BrowserRouter,createBrowserRouter,RouterProvider } from "react-router-dom";
 import Details from "./pages/app/details/Details";
+import Learn from "./pages/app/learn/Learn";
 
 function App() {
   const brouserRouter =createBrowserRouter([
@@ -14,7 +15,10 @@ function App() {
           children:[
             {index:true,element:<Courses/>},
             {path:':courseId',element:<Details/>}
-          ]}
+          ]},
+          {
+            path:'/learn/:courseId',element:<Learn/>
+          }
       ]
     }
   ])
