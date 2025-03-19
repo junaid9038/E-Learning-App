@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./Learn.module.css";
 import coursesData from "../../../data/courses.json";
-import { Link,useParams } from "react-router-dom";
+import { Link,Outlet,useParams } from "react-router-dom";
 // Task4: Import all the required elements from the react-router-dom
 
 function Learn() {
@@ -26,7 +26,10 @@ function Learn() {
             {course.chapters.map((chapter,i)=>{
               return(
                 <div className={style.chaterId} key={i}>
+                  {/* task-5 create link to each chapter to outlet chapter detaisl */}
+                  <Link to={`chapter/${chapter.chapter}`}>
                   {chapter.title}
+                  </Link>
                 </div>
               )
             })}
@@ -35,6 +38,7 @@ function Learn() {
       
       <div className={style.courses}>
         {/**Task5:  Chapter Details Must be rendered here */}
+      <Outlet context={{...course}}/>
       </div>
     </div>
 </div>
